@@ -7,12 +7,11 @@ try
 {
 $conn = new PDO("mysql:host=$servername;dbname=mk758", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-echo "Connected successfully"; 
-echo '<br>';
+echo "Connected successfully". "<br>" ;
 }
 catch(PDOException $e)
 {
-echo "Connection failed: " . $e->getMessage();
-echo '<br>';
+echo "Connection failed: " . "<br>" . $e->getMessage();
+
 }
 ?>
