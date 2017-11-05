@@ -1,6 +1,6 @@
 <?php
 
-class dbconn
+class dbConn
 {
 protected static $conn;
 
@@ -32,5 +32,17 @@ return self::$conn;
 $conn = dbconn::getConnection();
 echo "<b>Connected Successfully</b>"."<br>";
 
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+$statement = $conn->prepare('select * from accounts where id<6');
+$statement->execute();
+//$count = $statement->rowCount();
+while($result = $statement->fetch(PDO::FETCH_OBJ ))
+{
+$results[] = $result;
+}
+print_r($results);
+//print_r($count);
+
+//$results->setAttribute(PDOStatement::rowCount, PDOStatement::columnCount);
 
 ?>
