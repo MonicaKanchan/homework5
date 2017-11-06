@@ -35,13 +35,13 @@ echo "<b>Connected Successfully</b>"."<br>";
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 $statement = $conn->prepare('select * from accounts where id<6');
 $statement->execute();
-//$count = $statement->rowCount();
-while($result = $statement->fetch(PDO::FETCH_OBJ ))
+$x = $statement->fetchAll();
+echo "Total number of results are: ".count($x)."</br>";
+echo "<table border=\"1\"><tr><th>id</th><th>email</th><th>fname</th><th>lname</th><th>phone</th><th>birthday</th><th>gender</th><th>password</th></tr>";
+foreach($x as $temp)
 {
-$results[] = $result;
+echo "<tr><td>".$temp["id"]."</td><td>".$temp["email"]."</td><td>".$temp["fname"]."</td><td>".$temp["lname"]."</td><td>".$temp["phone"]."</td><td>".$temp["birthday"]."</td><td>".$temp["gender"]."</td><td>".$temp["password"]."</td></tr>";
 }
-print_r($results);
-//print_r($count);
 
 //$results->setAttribute(PDOStatement::rowCount, PDOStatement::columnCount);
 
